@@ -1,0 +1,6 @@
+kind: ImageStream
+metadata:
+  name: ghc
+spec:
+  lookupPolicy:
+    local: false

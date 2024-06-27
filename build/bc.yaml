@@ -1,0 +1,28 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: ghc 
+spec:
+  runPolicy: Serial 
+  triggers: 
+    -
+      type: GitHub
+      github:
+        secret: ^gHgR3!7CgQJ
+    -
+      type: ConfigChange
+  source: 
+    git:
+      uri: https://github.com/mailman-2097/gohttpchecker
+      ref: feat/develop/1
+  strategy: 
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: go-toolset:latest
+  output: 
+    to:
+      kind: ImageStreamTag
+      name: ghc:latest
+  postCommit: 
+      script: bundle exec rake test
