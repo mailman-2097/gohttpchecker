@@ -2,6 +2,7 @@ apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
   name: ghc
+  namespace: ghc
 spec:
   runPolicy: Serial
   triggers:
@@ -9,7 +10,7 @@ spec:
       type: GitHub
       github:
         secretReference:
-          name: "webhook-secret"
+          name: "github-webhook-secret"
     -
       type: ConfigChange
   source:

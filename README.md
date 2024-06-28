@@ -4,9 +4,9 @@ Simple app to check http client headers
 
 # Deploy
 
-Build this as a openshift s2i project
+Build this as a openshift s2i project based on [examples](https://examples.openshift.pub/build/)
 
-# Instructions
+# Simple Instructions
 
 ```
 
