@@ -1,0 +1,31 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: ghc
+  namespace: ghc
+spec:
+  runPolicy: Serial
+  triggers:
+    -
+      type: GitHub
+      github:
+        secretReference:
+          name: "github-webhook-secret"
+    -
+      type: ConfigChange
+  source:
+    type: Git
+    contextDir: app
+    git:
+      uri: https://github.com/mailman-2097/gohttpchecker
+      ref: feat/develop/1
+  strategy:
+    dockerStrategy:
+      imageOptimizationPolicy: SkipLayers
+  output:
+    to:
+      kind: ImageStreamTag
+      name: ghc:latest
+  postCommit: {}
+  resources: {}
+  nodeSelector: null
