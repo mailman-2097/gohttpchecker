@@ -25,7 +25,7 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: ghc-build:latest
+      name: ghc:latest
   postCommit: {}
   resources: {}
   nodeSelector: null
