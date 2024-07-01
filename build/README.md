@@ -1,8 +1,7 @@
 # Instructions
 
 ```
-oc apply -f ims.yaml
-oc apply -f bc.yaml
+oc apply -f build 
 
 oc describe bc/ghc
 
