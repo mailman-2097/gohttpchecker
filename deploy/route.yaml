@@ -1,0 +1,19 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name:  ghc
+  namespace: ghc
+  labels:
+    app: ghc
+  annotations:
+    haproxy.router.openshift.io/set-forwarded-headers: "append"
+    # haproxy.router.openshift.io/ip_whitelist: "172.24.1.37 172.16.120.244"
+spec:
+  port:
+    targetPort: 8888
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: ghc
+  wildcardPolicy: None

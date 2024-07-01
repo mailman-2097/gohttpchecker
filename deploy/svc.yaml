@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ghc
+  namespace: ghc
+  labels:
+    app: ghc
+spec:
+  selector:
+    app: ghc
+  ports:
+    - protocol: TCP
+      port: 8888
+      targetPort: 8888
