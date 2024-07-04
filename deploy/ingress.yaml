@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ghc
+  namespace: ghc
+  labels:
+    app: ghc
+spec:
+  rules:
+    - host: ghc.apps.d0.<domain>
+      http:
+        paths:
+          - backend:
+              service:
+                name: ghc
+                port:
+                  number: 8888
+            path: /
+            pathType: Exact
