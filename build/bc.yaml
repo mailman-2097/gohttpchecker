@@ -18,7 +18,7 @@ spec:
     contextDir: app
     git:
       uri: https://github.com/mailman-2097/gohttpchecker
-      ref: feat/develop/1
+      ref: main
   strategy:
     dockerStrategy:
       imageOptimizationPolicy: SkipLayers

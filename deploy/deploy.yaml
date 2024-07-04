@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ghc
+  namespace: ghc
+  name: ghc
+  annotations:
+    image.openshift.io/triggers: >-
+      [
+        {
+          "from": {
+            "kind": "ghc",
+            "name": "ghc:latest"
+          },
+          "fieldPath": "spec.template.spec.containers[0].image"
+        }
+      ]
+spec:
+  selector:
+    matchLabels:
+      app: ghc
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ghc
+    spec:
+      containers:
+        - name: container
+          image: >-
+            ""
+          ports:
+            - containerPort: 8888
+              protocol: TCP
+          env: []
+      imagePullSecrets: []
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  paused: false
